@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html >
+  <head > <link rel="icon" type="ico" href="earthquake2.png"> </link>
+  </head>
+  <script>
+  
+	function agnes()
+	{
+		var screenHeight=screen.height;
+		document.body.setAttribute("style","width:"+screenHeight+"px");
+		
+	}
+      function initMap() {
+	  
+        var uluru = {lat: 44.439663, lng: 26.096306};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom:11 ,
+          center: uluru,
+		  mapTypeId: 'hybrid',
+		  zoomControl: true,
+		  scaleControl: true
+        });
+	    
+		
+		var infowindow = new google.maps.InfoWindow();
+		
+		map.data.addListener('click', function(event) {
+        var adresaCom = event.feature.getProperty("Adresa com");
+		var anConstructie =event.feature.getProperty("An constru");
+		var claseRisc=event.feature.getProperty("Clase risc");
+		var regimInalt=event.feature.getProperty("Regim inal");
+		
+		infowindow.setContent("<div style='width:150px; text-align: center;'><strong>ADRESA:</strong>"+adresaCom+"<br><strong>AN CONSTRUCTIE:</strong>"+anConstructie+"<br><strong>CLASA RISC:</strong>"+claseRisc+"<br><strong>REGIM INALT:</strong>"+regimInalt+"</div>");
+		infowindow.setPosition(event.feature.getGeometry().get());
+		infowindow.setOptions({pixelOffset: new google.maps.Size(0,-30)});
+        infowindow.open(map);
+		
+		}); 
+		
+		
+		map.data.loadGeoJson('https://raw.githubusercontent.com/agnesandreea/trial-for-info-window/gh-pages/cladiri.json')
+	    map.data.setStyle(styleFeature);
+      }
+	  
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwAKS7R35dKSwSyHwTtoRoiKHKbG3OopM&libraries=places&callback=initMap">
+    </script>
+ <style>
+	#map
+	{
+		position:absolute;
+		height:100%;
+		width:100%;
+	}
+	    .controls {
+        margin-top: 10px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+    
+    </style>
+  <body onload="agnes()" >
+    <div id="map" >
+    
+	</div>
+	
+  </body>
+</html>
