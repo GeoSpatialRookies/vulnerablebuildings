@@ -32,7 +32,7 @@
 		var regimInalt=event.feature.getProperty("Regim inaltime");
 		var sector=event.feature.getProperty("Sector");
 		
-		infowindow.setContent("<div style='width:150px; text-align: center;'><strong>ADRESA:</strong>"+adresaCom+"<br><strong>SECTOR:</strong>"+sector+"<br><strong>AN CONSTRUCTIE:</strong>"+anConstructie+"<br><strong>CLASA RISC:</strong>"+claseRisc+"<br><strong>REGIM INALT:</strong>"+regimInalt+"</div>");
+		infowindow.setContent("<div style='width:150px; text-align: center;'><strong>ADRESA:</strong>"+adresaCom+"<br><strong>SECTOR:</strong>"+sector+"<br><strong>AN CONSTRUCTIE:</strong>"+anConstructie+"<br><strong>CLASA RISC:</strong>"+claseRisc+"<br><strong>REGIM INALTME:</strong>"+regimInalt+"</div>");
 		infowindow.setPosition(event.feature.getGeometry().get());
 		infowindow.setOptions({pixelOffset: new google.maps.Size(0,-30)});
         infowindow.open(map);
